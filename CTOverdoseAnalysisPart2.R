@@ -1,6 +1,5 @@
 # Will Clifford
 # ECON403 Econometrics I
-# Paper II - Due 12/06/19
 
 library(car)
 library(lmtest)
@@ -22,7 +21,7 @@ tp
 perc_tp <- ifelse(tp > 0, sum(ods_csv$Age > tp) / length(ods_csv$Age), "Negative Turning Point")
 perc_tp
 
-##  3. Group Drugs - from paper 1
+##  3. Group Drugs - from part 1
 summary(ods_lm1)
 
 #   4. Test for Homoskedasticity, Interpret, and Correct (if necessary)
