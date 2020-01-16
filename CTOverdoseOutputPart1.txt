@@ -1,0 +1,183 @@
+###   Totals in Data    ###
+Male               3775
+Female             1325
+
+Heroin             2529
+AnyOpioid          2459
+Fentanyl           2230
+Cocaine            1519
+Benzodiazepine     1342
+Ethanol            1247
+Oxycodone           607
+Methadone           474
+Fentanyl Analogue   389
+Amphet              159
+Tramad              130
+Hydrocodone         117
+Oxymorphone         108
+OpiateNOS            88
+Morphine(NoHeroin)   39
+Hydromorphone        25
+
+White              4003
+Hispanic            585
+Black               432
+Unknown              44
+Asian                34
+NativeAmerican        1
+Hawaiian              1
+
+> ###          MODELS          ###
+> #   1.  - Age, All Linear
+> ods_lm1 <- lm(Age~Female+Black+Hispanic+Unknown.Other+Cocaine+Fentanyl+FentanylAnalogue+Oxycodone+Oxymorphone
++               +Ethanol+Hydrocodone+Benzodiazepine+Methadone+Amphet+Tramad+Morphine_NotHeroin+Hydromorphone+OpiateNOS, data=ods_csv)
+> #   1a. - Age, Race/Gender Interaction
+> ods_lm1a <- lm(Age~Female+Black+Hispanic+Unknown.Other + Black*Female+Hispanic*Female+Unknown.Other*Female
++               +Cocaine+Fentanyl+FentanylAnalogue+Oxycodone+Oxymorphone+Ethanol+Hydrocodone+Benzodiazepine+Methadone+Amphet+Tramad
++               +Morphine_NotHeroin+Hydromorphone+OpiateNOS, data=ods_csv)
+> 
+> #   2.  - Number of Drugs by Race/Gender
+> ods_lm2 <- lm(NumDrugs~Age+Female+Black+Hispanic+Unknown.Other, data=ods_csv)
+> #   2a. - Number of drugs, Race/Gender interaction.
+> ods_lm2a <- lm(NumDrugs~Age+Female+Black+Hispanic+Unknown.Other+Black*Female+Hispanic*Female+Unknown.Other*Female, data=ods_csv)
+> 
+> ###         SUMMARIES        ###
+> summary(ods_lm1 )
+
+Call:
+lm(formula = Age ~ Female + Black + Hispanic + Unknown.Other + 
+    Cocaine + Fentanyl + FentanylAnalogue + Oxycodone + Oxymorphone + 
+    Ethanol + Hydrocodone + Benzodiazepine + Methadone + Amphet + 
+    Tramad + Morphine_NotHeroin + Hydromorphone + OpiateNOS, 
+    data = ods_csv)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-35.732  -9.581  -0.138   9.102  44.766 
+
+Coefficients:
+                   Estimate Std. Error t value Pr(>|t|)    
+(Intercept)        39.69462    0.34866 113.850  < 2e-16 ***
+Female              0.05428    0.38741   0.140 0.888570    
+Black               5.15967    0.61635   8.371  < 2e-16 ***
+Hispanic            1.59149    0.53259   2.988 0.002820 ** 
+Unknown.Other      -2.86913    1.34650  -2.131 0.033152 *  
+Cocaine             1.74469    0.37681   4.630 3.75e-06 ***
+Fentanyl           -2.05256    0.36609  -5.607 2.17e-08 ***
+FentanylAnalogue    0.57054    0.66520   0.858 0.391103    
+Oxycodone           4.17851    0.55890   7.476 8.95e-14 ***
+Oxymorphone        -0.45264    1.22633  -0.369 0.712066    
+Ethanol             2.44325    0.39016   6.262 4.11e-10 ***
+Hydrocodone         5.40627    1.12509   4.805 1.59e-06 ***
+Benzodiazepine      1.38470    0.39346   3.519 0.000437 ***
+Methadone           2.76121    0.58625   4.710 2.54e-06 ***
+Amphet             -2.47587    0.96305  -2.571 0.010172 *  
+Tramad              6.56097    1.06065   6.186 6.66e-10 ***
+Morphine_NotHeroin  4.24056    1.97198   2.150 0.031570 *  
+Hydromorphone       6.95552    2.40995   2.886 0.003916 ** 
+OpiateNOS           1.90676    1.30815   1.458 0.145013    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 11.91 on 5081 degrees of freedom
+Multiple R-squared:  0.07182,	Adjusted R-squared:  0.06853 
+F-statistic: 21.84 on 18 and 5081 DF,  p-value: < 2.2e-16
+
+> summary(ods_lm1a)
+
+Call:
+lm(formula = Age ~ Female + Black + Hispanic + Unknown.Other + 
+    Black * Female + Hispanic * Female + Unknown.Other * Female + 
+    Cocaine + Fentanyl + FentanylAnalogue + Oxycodone + Oxymorphone + 
+    Ethanol + Hydrocodone + Benzodiazepine + Methadone + Amphet + 
+    Tramad + Morphine_NotHeroin + Hydromorphone + OpiateNOS, 
+    data = ods_csv)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-36.302  -9.534  -0.217   9.000  44.287 
+
+Coefficients:
+                     Estimate Std. Error t value Pr(>|t|)    
+(Intercept)           39.5557     0.3523 112.292  < 2e-16 ***
+Female                 0.5578     0.4284   1.302 0.193034    
+Black                  5.7496     0.7109   8.087 7.56e-16 ***
+Hispanic               2.2167     0.5895   3.761 0.000171 ***
+Unknown.Other         -2.4402     1.5672  -1.557 0.119517    
+Cocaine                1.7540     0.3768   4.655 3.32e-06 ***
+Fentanyl              -2.0592     0.3659  -5.627 1.93e-08 ***
+FentanylAnalogue       0.5785     0.6649   0.870 0.384285    
+Oxycodone              4.1983     0.5587   7.514 6.72e-14 ***
+Oxymorphone           -0.4744     1.2261  -0.387 0.698826    
+Ethanol                2.4441     0.3900   6.267 3.97e-10 ***
+Hydrocodone            5.3510     1.1250   4.757 2.02e-06 ***
+Benzodiazepine         1.3886     0.3933   3.530 0.000419 ***
+Methadone              2.7719     0.5860   4.730 2.31e-06 ***
+Amphet                -2.4670     0.9630  -2.562 0.010438 *  
+Tramad                 6.6142     1.0613   6.232 4.96e-10 ***
+Morphine_NotHeroin     4.1673     1.9712   2.114 0.034559 *  
+Hydromorphone          6.9419     2.4104   2.880 0.003994 ** 
+OpiateNOS              1.7925     1.3082   1.370 0.170677    
+Female:Black          -2.2659     1.3749  -1.648 0.099419 .  
+Female:Hispanic       -3.2779     1.3606  -2.409 0.016025 *  
+Female:Unknown.Other  -1.6180     3.0603  -0.529 0.597018    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 11.9 on 5078 degrees of freedom
+Multiple R-squared:  0.07327,	Adjusted R-squared:  0.06944 
+F-statistic: 19.12 on 21 and 5078 DF,  p-value: < 2.2e-16
+
+> summary(ods_lm2 )
+
+Call:
+lm(formula = NumDrugs ~ Age + Female + Black + Hispanic + Unknown.Other, 
+    data = ods_csv)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-1.3439 -1.1066 -0.1649  0.7935  4.9767 
+
+Coefficients:
+               Estimate Std. Error t value Pr(>|t|)    
+(Intercept)    2.031601   0.052697  38.552  < 2e-16 ***
+Age            0.004164   0.001194   3.489  0.00049 ***
+Female        -0.048283   0.033414  -1.445  0.14852    
+Black         -0.134353   0.053198  -2.526  0.01158 *  
+Hispanic      -0.087463   0.046318  -1.888  0.05904 .  
+Unknown.Other  0.020795   0.117874   0.176  0.85997    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 1.043 on 5094 degrees of freedom
+Multiple R-squared:  0.004048,	Adjusted R-squared:  0.00307 
+F-statistic: 4.141 on 5 and 5094 DF,  p-value: 0.0009359
+
+> summary(ods_lm2a)
+
+Call:
+lm(formula = NumDrugs ~ Age + Female + Black + Hispanic + Unknown.Other + 
+    Black * Female + Hispanic * Female + Unknown.Other * Female, 
+    data = ods_csv)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-1.3450 -1.1042 -0.1645  0.7941  4.9842 
+
+Coefficients:
+                      Estimate Std. Error t value Pr(>|t|)    
+(Intercept)           2.034370   0.052780  38.545  < 2e-16 ***
+Age                   0.004198   0.001195   3.514 0.000446 ***
+Female               -0.063612   0.037099  -1.715 0.086474 .  
+Black                -0.161808   0.061829  -2.617 0.008896 ** 
+Hispanic             -0.098362   0.051364  -1.915 0.055547 .  
+Unknown.Other        -0.008742   0.137281  -0.064 0.949225    
+Female:Black          0.104475   0.120449   0.867 0.385774    
+Female:Hispanic       0.053339   0.119269   0.447 0.654737    
+Female:Unknown.Other  0.112349   0.267774   0.420 0.674819    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 1.044 on 5091 degrees of freedom
+Multiple R-squared:  0.004248,	Adjusted R-squared:  0.002683 
+F-statistic: 2.715 on 8 and 5091 DF,  p-value: 0.005536
