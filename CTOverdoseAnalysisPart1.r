@@ -1,7 +1,5 @@
 # Will Clifford
 # ECON403 Econometrics I - Paper I
-# Due 10/18/19 @ 23:59
-
 
 # Overdose data from Data.gov and the State of Maryland.
 # ( See https://data.ct.gov/Health-and-Human-Services/Accidental-Drug-Related-Deaths-2012-2018/rybz-nyjw )
@@ -17,7 +15,7 @@ table(ods_csv$White)
 table(ods_csv$Hispanic)
 table(ods_csv$Unknown.Other)
 #    Drug:
-table(ods_csv$Heroin) # almost half of ODs involve heroin
+table(ods_csv$Heroin)
 table(ods_csv$Cocaine)
 table(ods_csv$Fentanyl)
 table(ods_csv$FentanylAnalogue)
