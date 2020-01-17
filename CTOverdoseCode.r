@@ -16,10 +16,10 @@ ods_csv$Black <- ifelse(ods_csv$Race == "Black", 1, 0)
 ods_csv$White <- ifelse(ods_csv$Race == "White", 1, 0)
 ods_csv$Hispanic <- ifelse(ods_csv$Race == "Hispanic, White" | 
                               ods_csv$Race == "Hispanic, Black", 1, 0)
-ods_csv$Unknown.Other <- ifelse(ods_csv$Race == "Asian Indian" | 
-                                   ods_csv$Race == "Asian, Other" | 
-                                   ods_csv$Race == "Chinese" | 
-                                   ods_csv$Race == "Hawaiian" | 
+ods_csv$Asian <- ifelse(ods_csv$Race == "Asian Indian" | 
+                                  ods_csv$Race == "Asian, Other" | 
+                                  ods_csv$Race == "Chinese", 1, 0)
+ods_csv$Unknown.Other <- ifelse(ods_csv$Race == "Hawaiian" | 
                                    ods_csv$Race == "Native American, Other" | 
                                    ods_csv$Race == "Other" | 
                                    ods_csv$Race == "Unknown" | 
@@ -52,7 +52,12 @@ ods_csv$NumDrugs <- ods_csv$Heroin + ods_csv$Cocaine + ods_csv$Fentanyl +
 #    Gender:
 table(ods_csv$Female)
 #    Race:
-table(ods_csv$Race)
+table(ods_csv$Black)
+table(ods_csv$White)
+table(ods_csv$Hispanic)
+table(ods_csv$Asian)
+table(ods_csv$Unknown.Other)
+
 #    Drug:
 table(ods_csv$Heroin)
 table(ods_csv$Cocaine)
@@ -75,14 +80,14 @@ table(ods_csv$NumDrugs)
 
 ###  Create Models
 #   1.  Age, All Linear
-ods_lm1 <- lm(Age~Female+Black+Hispanic+Unknown.Other+Cocaine+Fentanyl+FentanylAnalogue+Oxycodone+Oxymorphone
+ods_lm1 <- lm(Age~Female+Black+Hispanic+Asian+Unknown.Other+Cocaine+Fentanyl+FentanylAnalogue+Oxycodone+Oxymorphone
               +Ethanol+Hydrocodone+Benzodiazepine+Methadone+Amphet+Tramad+Morphine_NotHeroin+Hydromorphone+OpiateNOS, data=ods_csv)
 #   1a. Age, Race/Gender Interaction
-ods_lm1a <- lm(Age~Female+Black+Hispanic+Unknown.Other + Black*Female+Hispanic*Female+Unknown.Other*Female
+ods_lm1a <- lm(Age~Female+Black+Hispanic+Asian+Unknown.Other + Black*Female+Hispanic*Female+Unknown.Other*Female
               +Cocaine+Fentanyl+FentanylAnalogue+Oxycodone+Oxymorphone+Ethanol+Hydrocodone+Benzodiazepine+Methadone+Amphet+Tramad
               +Morphine_NotHeroin+Hydromorphone+OpiateNOS, data=ods_csv)
 #   2.  Quadratic model
-ods_quad <- lm(NumDrugs~Age+I(Age^2)+Female+Black+Hispanic+Unknown.Other, data=ods_csv)
+ods_quad <- lm(NumDrugs~Age+I(Age^2)+Female+Black+Hispanic+Asian+Unknown.Other, data=ods_csv)
 
 
 ###  Display Model Summaries

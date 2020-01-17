@@ -44,57 +44,57 @@ OpiateNOS             88
 > ###  Display Model Summaries
 > bptest(ods_lm1)
 	studentized Breusch-Pagan test
-BP = 63.042, df = 18, p-value = 6.537e-07
+BP = 63.605, df = 19, p-value = 1.027e-06
 
 > coeftest(ods_lm1, hccm(ods_lm1))
 t test of coefficients:
                     Estimate Std. Error  t value  Pr(>|t|)    
-(Intercept)        39.713574   0.363245 109.3300 < 2.2e-16 ***
-Female              0.052022   0.391936   0.1327 0.8944114    
-Black               5.138939   0.619220   8.2991 < 2.2e-16 ***
-Hispanic            1.593725   0.522553   3.0499 0.0023011 ** 
-Unknown.Other      -2.864502   1.436873  -1.9936 0.0462529 *  
-Cocaine             1.743348   0.371872   4.6880 2.831e-06 ***
-Fentanyl           -2.108052   0.367535  -5.7356 1.028e-08 ***
-FentanylAnalogue    0.609156   0.659716   0.9234 0.3558630    
-Oxycodone           4.165625   0.579685   7.1860 7.637e-13 ***
-Oxymorphone        -0.454761   1.258466  -0.3614 0.7178444    
-Ethanol             2.449698   0.375929   6.5164 7.898e-11 ***
-Hydrocodone         5.397724   1.067474   5.0565 4.419e-07 ***
-Benzodiazepine      1.386166   0.401843   3.4495 0.0005661 ***
-Methadone           2.755487   0.564390   4.8822 1.081e-06 ***
-Amphet             -2.482437   0.920019  -2.6982 0.0069937 ** 
-Tramad              6.562477   1.155149   5.6811 1.413e-08 ***
-Morphine_NotHeroin  4.325072   1.553840   2.7835 0.0053979 ** 
-Hydromorphone       6.946683   2.429400   2.8594 0.0042614 ** 
-OpiateNOS           1.889348   1.387794   1.3614 0.1734464    
+(Intercept)        39.717353   0.363025 109.4068 < 2.2e-16 ***
+Female              0.066196   0.392022   0.1689 0.8659149    
+Black               5.137992   0.619214   8.2976 < 2.2e-16 ***
+Hispanic            1.593790   0.522551   3.0500 0.0023001 ** 
+Asian              -6.252299   2.023934  -3.0892 0.0020179 ** 
+Unknown.Other      -0.362033   1.941468  -0.1865 0.8520805    
+Cocaine             1.734470   0.371796   4.6651 3.164e-06 ***
+Fentanyl           -2.108386   0.367344  -5.7395 1.004e-08 ***
+FentanylAnalogue    0.623177   0.658693   0.9461 0.3441522    
+Oxycodone           4.151014   0.579529   7.1627 9.039e-13 ***
+Oxymorphone        -0.516896   1.262623  -0.4094 0.6822760    
+Ethanol             2.443670   0.375848   6.5018 8.700e-11 ***
+Hydrocodone         5.381447   1.068608   5.0359 4.919e-07 ***
+Benzodiazepine      1.385497   0.401691   3.4492 0.0005669 ***
+Methadone           2.734988   0.564318   4.8465 1.294e-06 ***
+Amphet             -2.456259   0.921716  -2.6649 0.0077260 ** 
+Tramad              6.620966   1.154707   5.7339 1.038e-08 ***
+Morphine_NotHeroin  4.346455   1.553313   2.7982 0.0051585 ** 
+Hydromorphone       6.841557   2.423727   2.8227 0.0047800 ** 
+OpiateNOS           1.853343   1.383835   1.3393 0.1805394    
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-
 > bptest(ods_quad)
 	studentized Breusch-Pagan test
-BP = 12.223, df = 6, p-value = 0.05718
+BP = 13.374, df = 7, p-value = 0.0635
 
 > coeftest(ods_quad, hccm(ods_quad))
 t test of coefficients:
                  Estimate  Std. Error t value  Pr(>|t|)    
-(Intercept)    1.1998e+00  1.5254e-01  7.8654 4.459e-15 ***
-Age            4.6197e-02  7.5489e-03  6.1196 1.008e-09 ***
-I(Age^2)      -5.0460e-04  8.7991e-05 -5.7346 1.033e-08 ***
-Female        -7.6252e-02  3.4167e-02 -2.2318   0.02567 *  
-Black         -1.3212e-01  5.6534e-02 -2.3370   0.01948 *  
-Hispanic      -8.4963e-02  4.5186e-02 -1.8803   0.06012 .  
-Unknown.Other  3.8388e-02  1.2901e-01  0.2976   0.76605    
+(Intercept)    1.1995e+00  1.5256e-01  7.8621 4.576e-15 ***
+Age            4.6211e-02  7.5498e-03  6.1208 1.001e-09 ***
+I(Age^2)      -5.0472e-04  8.8003e-05 -5.7353 1.030e-08 ***
+Female        -7.6302e-02  3.4171e-02 -2.2329   0.02560 *  
+Black         -1.3214e-01  5.6534e-02 -2.3373   0.01946 *  
+Hispanic      -8.4975e-02  4.5186e-02 -1.8806   0.06009 .  
+Asian          5.1126e-02  2.1723e-01  0.2354   0.81394    
+Unknown.Other  2.9000e-02  1.5962e-01  0.1817   0.85585    
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
 > tp <- coefficients(ods_quad)["Age"]/(-2*coefficients(ods_quad)["I(Age^2)"])
 > perc_tp <- ifelse(tp > 0, sum(ifelse(is.na(ods_csv$Age), 0, ods_csv$Age > tp)) / length(ods_csv$Age), "Negative Turning Point")
-
 > tp
      Age 
-45.77557 
+45.77859 
 > perc_tp
       Age 
 0.4150833 
