@@ -46,6 +46,7 @@ ods_csv$NumDrugs <- ods_csv$Heroin + ods_csv$Cocaine + ods_csv$Fentanyl +
   ods_csv$Ethanol + ods_csv$Benzodiazepine + ods_csv$Methadone +
   ods_csv$Amphet + ods_csv$Tramad + ods_csv$Morphine_NotHeroin +
   ods_csv$Hydromorphone + ods_csv$OpiateNOS
+ods_csv$NumDrugs <- ifelse(ods_csv$NumDrugs == 0, 1, ods_csv$NumDrugs)
 
 
 ###  Display Tables

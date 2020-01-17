@@ -32,8 +32,7 @@ Hydromorphone         25
 OpiateNOS             88 
 
 > #    Number of drugs detected after overdose
-0                     91
-1                   1490
+1                   1581
 2                   1861
 3                   1130
 4                    409
