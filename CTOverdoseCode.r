@@ -6,7 +6,7 @@ library(lmtest)
 
 
 # Overdose data from Data.gov and the State of Maryland (See https://data.ct.gov/Health-and-Human-Services/Accidental-Drug-Related-Deaths-2012-2018/rybz-nyjw)
-ods_csv <- read.csv("~/GitHub/CT-Overdose-Analysis/data/Accidental_Drug_Related_Deaths_2012-2018.csv")
+ods_csv <- read.csv("Accidental_Drug_Related_Deaths_2012-2018.csv")
 
 
 ###  Create New Variables
